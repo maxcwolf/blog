@@ -1,4 +1,4 @@
-# My Personal Site and Blog
+# My Personal Site and Blog :wolf:
 
 ## Tech used:
 

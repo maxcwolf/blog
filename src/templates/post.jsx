@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../layouts'
+import Layout from '../layouts/index'
+import TagsBlock from '../components/TagBlock'
 
 const Post = ({ data }) => {
   const post = data.markdownRemark
@@ -11,6 +12,7 @@ const Post = ({ data }) => {
   return (
     <Layout>
       <h1>{title}</h1>
+      <TagsBlock list={post.frontmatter.tags || []} />
       <p>{date}</p>
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </Layout>

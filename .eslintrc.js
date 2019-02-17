@@ -10,6 +10,7 @@ module.exports = {
     'no-console': 'warn',
     quotes: ['warn', 'single'],
     'no-unused-vars': [1],
+    'react/jsx-uses-vars': [1],
     'react/jsx-filename-extension': [
       1,
       {

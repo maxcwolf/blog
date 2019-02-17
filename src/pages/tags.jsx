@@ -1,8 +1,14 @@
 import React from 'react'
+import TagsBlock from '../components/TagBlock'
 
 const Tags = ({ pageContext }) => {
   console.log(pageContext)
-  return <div>Tags Page Here</div>
+  const { tags } = pageContext
+  return (
+    <div>
+      <TagsBlock list={tags} />
+    </div>
+  )
 }
 
 export default Tags

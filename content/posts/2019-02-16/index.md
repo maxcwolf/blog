@@ -1,6 +1,7 @@
 ---
 title: "Linux Z-Shell On Windows 10"
 path: "/linux-on-win10-setup"
+cover: "./linuxwindows.jpg"
 date: "2019-02-16"
 draft: false
 tags: ["zsh", "wsl", "linux"]

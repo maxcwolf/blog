@@ -20,11 +20,13 @@ exports.createPages = ({ graphql, actions }) => {
     const postTemplate = path.resolve('src/templates/post.jsx')
     const tagPage = path.resolve('src/pages/tags.jsx')
     const tagPosts = path.resolve('src/templates/tag.jsx')
-    // call our graphql query to resolve the promise starting with allMarkdownRemark and including the file path
+
+    // Graphql query to resolve the promise starting with allMarkdownRemark and including the file path
+    // Sort the results by date
     resolve(
       graphql(`
         query {
-          allMarkdownRemark {
+          allMarkdownRemark(sort: { order: ASC, fields: [frontmatter___date] }) {
             edges {
               node {
                 frontmatter {
@@ -82,15 +84,19 @@ exports.createPages = ({ graphql, actions }) => {
           })
         })
 
-        //create posts
-        posts.forEach(({ node }) => {
+        // Create Posts -> add pagination link paths
+        posts.forEach(({ node }, index) => {
           const path = node.frontmatter.path
+          const prev = index === 0 ? null : posts[index - 1].node
+          const next = index === posts.length - 1 ? null : posts[index + 1].node
 
           createPage({
             path,
             component: postTemplate,
             context: {
-              pathSlug: path
+              pathSlug: path,
+              prev,
+              next
             }
           })
         })

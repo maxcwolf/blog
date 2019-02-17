@@ -34,8 +34,15 @@ export const query = graphql`
           excerpt(pruneLength: 100)
           frontmatter {
             title
-            date(formatString: "MM.DD.YYY")
             path
+            date(formatString: "MM.DD.YYY")
+            cover {
+              childImageSharp {
+                fluid(maxWidth: 1000, quality: 90, traceSVG: { color: "#2B2B2F" }) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                }
+              }
+            }
           }
         }
       }

@@ -1,21 +1,51 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-import Layout from '../layouts'
+import styled from '@emotion/styled'
+import { Header, PostList } from '../components'
+import { Layout } from '../layouts'
+
+const PostWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 4rem 4rem 1rem 4rem;
+  @media (max-width: 1000px) {
+    margin: 4rem 2rem 1rem 2rem;
+  }
+  @media (max-width: 700px) {
+    margin: 4rem 1rem 1rem 1rem;
+  }
+`
 
 const Index = ({ data }) => {
   const { edges } = data.allMarkdownRemark
   return (
     <Layout>
-      <h1>Wolf Blog Home Page</h1>
-      {edges.map(({ node }) => (
-        <div key={node.id}>
-          <Link to={node.frontmatter.path}>
-            <h3>{node.frontmatter.title} </h3>
-          </Link>
-          <p>{node.frontmatter.date}</p>
-          <p>{node.excerpt}</p>
-        </div>
-      ))}
+      <Header title="Max Wolf">Home</Header>
+      <div style={{ 'text-align': 'center', fontSize: '2rem' }}>
+        <span role="img" aria-label="warning sign">
+          {' '}
+          ⚠️{' '}
+        </span>{' '}
+        This site is a Work In Progress{' '}
+        <span role="img" aria-label="warning sign">
+          {' '}
+          ⚠️{' '}
+        </span>
+      </div>
+      <PostWrapper>
+        {edges.map(({ node }) => (
+          <PostList
+            key={node.id}
+            cover={node.frontmatter.cover.childImageSharp.fluid}
+            path={node.frontmatter.path}
+            title={node.frontmatter.title}
+            date={node.frontmatter.date}
+            excerpt={node.excerpt}
+          />
+        ))}
+      </PostWrapper>
     </Layout>
   )
 }

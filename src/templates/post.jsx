@@ -1,27 +1,56 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
+import styled from '@emotion/styled'
 import Img from 'gatsby-image'
-import Layout from '../layouts/index'
-import TagsBlock from '../components/TagsBlock'
+import { Layout, Container, Content } from '../layouts'
+import { TagsBlock, Header } from '../components'
+
+const SuggestionBar = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  background: ${props => props.theme.colors.white.light};
+  box-shadow: ${props => props.theme.shadow.suggestion};
+`
+const PostSuggestion = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 1rem 3rem 0 3rem;
+`
 
 const Post = ({ data, pageContext }) => {
   const { next, prev } = pageContext // get pagination links from pageContext
   const post = data.markdownRemark
   const title = post.frontmatter.title
   const date = post.frontmatter.date
+  const image = post.frontmatter.cover.childImageSharp.fluid
   const html = post.html // the html isnt in the frontmatter object, but the markdownRemark obj.
 
-  console.log({ pageContext })
   return (
     <Layout>
-      <Img fluid={post.frontmatter.cover.childImageSharp.fluid} />
-      <h1>{title}</h1>
-      {/* I AM USING THE TAGBLOCK WRONG */}
-      <TagsBlock list={post.frontmatter.tags || []} />
-      <p>{date}</p>
-      <div dangerouslySetInnerHTML={{ __html: html }} />
-      <div>{next && <Link to={next.frontmatter.path}>Next Post</Link>}</div>
-      <div>{prev && <Link to={prev.frontmatter.path}>Previous Post</Link>}</div>
+      <Header title={title} date={date} cover={image} />
+      <Container>
+        <Content input={html} />
+        <TagsBlock list={post.frontmatter.tags || []} />
+      </Container>
+      <SuggestionBar>
+        <PostSuggestion>
+          {prev && (
+            <Link to={prev.frontmatter.path}>
+              Previous
+              <h3>{prev.frontmatter.title}</h3>
+            </Link>
+          )}
+        </PostSuggestion>
+        <PostSuggestion>
+          {next && (
+            <Link to={next.frontmatter.path}>
+              Next
+              <h3>{next.frontmatter.title}</h3>
+            </Link>
+          )}
+        </PostSuggestion>
+      </SuggestionBar>
     </Layout>
   )
 }

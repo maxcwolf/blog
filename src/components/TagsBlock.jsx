@@ -6,7 +6,7 @@ const TagsBlock = ({ list }) => {
     <div>
       {list.map(tag => (
         <Link key={tag} to={`/tags/${tag}`}>
-          {tag}
+          {`${tag}  `}
         </Link>
       ))}
     </div>

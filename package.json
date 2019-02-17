@@ -1,7 +1,7 @@
 {
   "name": "gatsby-personal-site",
   "version": "1.0.0",
-  "description": "Personal Portfolio and Blog",
+  "description": "Personal Site and Blog",
   "main": "index.js",
   "dependencies": {
     "gatsby": "^2.1.4",
@@ -14,7 +14,6 @@
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "eslint": "5.3.0",
-    "eslint-config-airbnb": "17.1.0",
     "eslint-config-prettier": "4.0.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
@@ -30,7 +29,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""

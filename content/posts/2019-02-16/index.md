@@ -1,7 +1,8 @@
 ---
-path: "/front-end-setup"
-date: "2019-02-16"
 title: "Linux Z-Shell On Windows 10"
+path: "/linux-on-win10-setup"
+date: "2019-02-16"
+draft: false
 tags: ["zsh", "wsl", "linux", "oh-my-zsh"]
 ---
 

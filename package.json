@@ -48,10 +48,11 @@
     "dev": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/maxcwolf/personal-site"
+    "url": "https://github.com/maxcwolf/blog"
   }
 }

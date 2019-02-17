@@ -28,6 +28,20 @@ module.exports = {
         ]
       }
     },
-    'gatsby-plugin-sharp'
+    {
+      resolve: 'gatsby-plugin-typography',
+      options: {
+        pathToConfigModule: 'config/typography.js'
+      }
+    },
+    'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-plugin-emotion',
+      options: {
+        autoLabel: process.env.NODE_ENV !== 'production',
+        // eslint-disable-next-line
+        labelFormat: `[filename]--[local]`
+      }
+    }
   ]
 }

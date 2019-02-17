@@ -6,9 +6,20 @@
 
 ### Gatsby plugins used
 
+#### Markdown and Filesystem
+
 - catch-links
 - source-filesystem
 - transformer-remark
+
+#### Image
+
+- gatsby-transformer-sharp
+- gatsby-plugin-sharp
+- gatsby-remark-images
+- gatsby-image
+
+---
 
 ## Steps to run:
 

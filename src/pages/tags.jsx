@@ -1,5 +1,5 @@
 import React from 'react'
-import TagsBlock from '../components/TagBlock'
+import TagsBlock from '../components/TagsBlock'
 
 const Tags = ({ pageContext }) => {
   console.log(pageContext)

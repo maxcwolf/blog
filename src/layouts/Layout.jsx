@@ -1,9 +1,12 @@
-import React, { Fragment } from 'react'
-import { ThemeProvider } from 'emotion-theming'
-import { css, Global } from '@emotion/core'
-import theme from '../../config/theme'
-import headroom from '../styles/headroom'
-import { Footer, NavBar } from './'
+import React, { Fragment } from "react"
+import { ThemeProvider } from "emotion-theming"
+import { css, Global } from "@emotion/core"
+import PropTypes from "prop-types"
+import theme from "../../config/theme"
+import "typeface-open-sans"
+import "typeface-candal"
+import headroom from "../styles/headroom"
+import { Footer, NavBar } from "./"
 
 const Layout = ({ children }) => (
   <ThemeProvider theme={theme}>
@@ -61,6 +64,10 @@ const Layout = ({ children }) => (
 )
 
 export default Layout
+
+Layout.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.node]).isRequired
+}
 
 /**
  export default ({ children }) => (

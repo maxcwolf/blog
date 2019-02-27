@@ -1,6 +1,7 @@
-import React from 'react'
-import styled from '@emotion/styled'
-import Img from 'gatsby-image'
+import React from "react"
+import styled from "@emotion/styled"
+import Img from "gatsby-image"
+import PropTypes from "prop-types"
 
 const Wrapper = styled.header`
   background: ${props => props.theme.gradient.rightToLeft};
@@ -37,9 +38,11 @@ const Subtitle = styled.p`
   color: ${props => props.theme.colors.white.light};
 `
 
+const defaultImg = { aspectRatio: 1, src: "", srcSet: "", sizes: "" }
+
 const Header = ({ children, title, date, cover }) => (
   <Wrapper>
-    <Img fluid={cover || {} || [] || ''} />
+    <Img fluid={cover || defaultImg} />
     <Text>
       <h1>{title}</h1>
       <h3>{date}</h3>
@@ -50,6 +53,13 @@ const Header = ({ children, title, date, cover }) => (
 )
 
 export default Header
+
+Header.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.node, PropTypes.bool]),
+  cover: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  date: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.bool])
+}
 
 Header.defaultProps = {
   children: false,

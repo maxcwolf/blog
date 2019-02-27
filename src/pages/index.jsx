@@ -1,8 +1,9 @@
-import React from 'react'
-import { Link, graphql } from 'gatsby'
-import styled from '@emotion/styled'
-import { Header, PostList } from '../components'
-import { Layout } from '../layouts'
+import React from "react"
+import { Link, graphql } from "gatsby"
+import PropTypes from "prop-types"
+import styled from "@emotion/styled"
+import { Header, PostList } from "../components"
+import { Layout } from "../layouts"
 
 const PostWrapper = styled.div`
   display: flex;
@@ -23,17 +24,7 @@ const Index = ({ data }) => {
   return (
     <Layout>
       <Header title="Max Wolf">Home</Header>
-      <div style={{ 'text-align': 'center', fontSize: '2rem' }}>
-        <span role="img" aria-label="warning sign">
-          {' '}
-          ⚠️{' '}
-        </span>{' '}
-        This site is a Work In Progress{' '}
-        <span role="img" aria-label="warning sign">
-          {' '}
-          ⚠️{' '}
-        </span>
-      </div>
+      <div style={{ textAlign: "center", fontSize: "2rem" }} />
       <PostWrapper>
         {edges.map(({ node }) => (
           <PostList
@@ -51,6 +42,27 @@ const Index = ({ data }) => {
 }
 
 export default Index
+
+Index.propTypes = {
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({
+          node: PropTypes.shape({
+            excerpt: PropTypes.string,
+            frontmatter: PropTypes.shape({
+              cover: PropTypes.object.isRequired,
+              path: PropTypes.string.isRequired,
+              title: PropTypes.string.isRequired,
+              date: PropTypes.string.isRequired,
+              tags: PropTypes.array
+            })
+          })
+        }).isRequired
+      )
+    })
+  })
+}
 
 export const query = graphql`
   query {

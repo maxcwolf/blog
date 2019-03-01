@@ -1,13 +1,17 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import styled from '@emotion/styled'
-import Headroom from 'react-headroom'
-import logo from '../../static/images/mw-grey.jpg'
+import React from "react"
+import { Link } from "gatsby"
+import styled from "@emotion/styled"
+import Headroom from "react-headroom"
+import theme from "../../config/theme"
+//import logo from "../../static/images/mw-grey.jpg"
 
 const StyledLink = styled(Link)`
   display: flex;
-  font-weight: 700;
+  font-weight: 1000;
+  font-size: 2rem;
   align-items: center;
+  font-family: ${theme.fontFamily.heading};
+  color: white;
 `
 
 const Nav = styled.nav`
@@ -28,7 +32,7 @@ const Nav = styled.nav`
 
 const NavBar = () => (
   <Headroom calcHeightOnResize disableInlineStyles>
-    <StyledLink to="/">{/* <img src={logo} alt="MW Logo" /> */}</StyledLink>
+    <StyledLink to="/">MW</StyledLink>
     <Nav>
       <Link to="/">Home</Link>
       <Link to="/blog">Blog</Link>

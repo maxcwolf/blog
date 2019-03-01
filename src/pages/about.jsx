@@ -1,11 +1,14 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import { Layout } from '../layouts'
+import React from "react"
+import { graphql } from "gatsby"
+import { Header } from "../components"
+import { Layout, Container } from "../layouts"
 
-const About = ({ data }) => (
+const About = center => (
   <Layout>
-    <h1>{data.site.siteMetadata.title} About Page</h1>
-    <p>This is the about page.</p>
+    <Header title="About Me">My Name is Max</Header>
+    <Container center={center}>
+      <h3>derpy derp derp</h3>
+    </Container>
   </Layout>
 )
 
